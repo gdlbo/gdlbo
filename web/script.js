@@ -1,10 +1,5 @@
-import "material/button/filled-button.js";
-import "material/button/filled-tonal-button.js";
 import "material/button/text-button.js";
 import { Button } from "material/button/internal/button.js";
-import "material/card/elevated-card.js";
-import "material/chips/filter-chip.js";
-import "material/divider/divider.js";
 import { copy } from "./copy.js";
 
 Button.prototype.handleSlotChange = function handleSlotChange() {
@@ -13,14 +8,14 @@ Button.prototype.handleSlotChange = function handleSlotChange() {
   this.hasIcon = assignedIcons.length > 0;
 };
 
-const langButtons = Array.from(document.querySelectorAll("[data-lang]"));
 const textNodes = Array.from(document.querySelectorAll("[data-i18n]"));
 const ariaLabelNodes = Array.from(document.querySelectorAll("[data-i18n-aria-label]"));
 const altNodes = Array.from(document.querySelectorAll("[data-i18n-alt]"));
 const contentNodes = Array.from(document.querySelectorAll("[data-i18n-content]"));
 
+const languageToggle = document.getElementById("languageToggle");
+const languageStateNode = document.querySelector("[data-language-state]");
 const themeToggle = document.getElementById("themeToggle");
-const themeStateNode = document.querySelector("[data-theme-state]");
 const themeIconNode = document.querySelector("[data-theme-icon]");
 const themeMeta = document.querySelector('meta[name="theme-color"]');
 
@@ -37,24 +32,21 @@ let currentTheme = resolveTheme();
 applyLanguage(currentLanguage);
 applyTheme(currentTheme);
 
-langButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const nextLanguage = button.dataset.lang;
-    if (!copy[nextLanguage] || nextLanguage === currentLanguage) {
-      return;
-    }
-
-    currentLanguage = nextLanguage;
+if (languageToggle) {
+  languageToggle.addEventListener("click", () => {
+    currentLanguage = currentLanguage === "ru" ? "en" : "ru";
     localStorage.setItem("gdlbo-language", currentLanguage);
     applyLanguage(currentLanguage);
   });
-});
+}
 
-themeToggle.addEventListener("click", () => {
-  currentTheme = currentTheme === "dark" ? "light" : "dark";
-  localStorage.setItem("gdlbo-theme", currentTheme);
-  applyTheme(currentTheme);
-});
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    currentTheme = currentTheme === "dark" ? "light" : "dark";
+    localStorage.setItem("gdlbo-theme", currentTheme);
+    applyTheme(currentTheme);
+  });
+}
 
 if (typeof colorSchemeQuery.addEventListener === "function") {
   colorSchemeQuery.addEventListener("change", () => {
@@ -86,6 +78,7 @@ function resolveTheme() {
 function applyLanguage(language) {
   const dictionary = copy[language];
   document.documentElement.lang = language;
+  document.documentElement.dataset.language = language;
 
   textNodes.forEach((node) => {
     const key = node.dataset.i18n;
@@ -119,11 +112,14 @@ function applyLanguage(language) {
     }
   });
 
-  langButtons.forEach((button) => {
-    const isActive = button.dataset.lang === language;
-    button.selected = isActive;
-    button.setAttribute("aria-pressed", String(isActive));
-  });
+  if (languageToggle) {
+    languageToggle.dataset.language = language;
+    languageToggle.setAttribute("aria-pressed", String(language === "ru"));
+  }
+
+  if (languageStateNode) {
+    languageStateNode.textContent = language.toUpperCase();
+  }
 
   syncThemeCopy();
 }
@@ -140,13 +136,15 @@ function applyTheme(theme) {
 
 function syncThemeCopy() {
   const dictionary = copy[currentLanguage];
-  if (themeStateNode) {
-    themeStateNode.textContent = dictionary[`utility.themeState.${currentTheme}`];
-  }
-
   if (themeIconNode) {
     themeIconNode.textContent = currentTheme === "dark" ? "dark_mode" : "light_mode";
   }
 
-  themeToggle.setAttribute("aria-label", dictionary["utility.themeToggle"]);
+  if (themeToggle) {
+    themeToggle.setAttribute("aria-label", dictionary["utility.themeToggle"]);
+  }
+
+  if (languageToggle) {
+    languageToggle.setAttribute("aria-label", dictionary["utility.languageSwitcher"]);
+  }
 }

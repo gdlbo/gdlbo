@@ -98,74 +98,66 @@
         document.documentElement.lang = resolvedLanguage;
       })();
     </script>
-    <link rel="stylesheet" href="./styles.css?v=20260705" />
-    <script type="module" src="./script.js?v=20260705"></script>
+    <link rel="stylesheet" href="./styles.css?v=20260706" />
+    <script type="module" src="./script.js?v=20260706"></script>
   </head>
   <body>
-    <div class="page-shell">
-      <div class="backdrop backdrop-grid" aria-hidden="true"></div>
-      <div class="backdrop backdrop-radial backdrop-radial--top" aria-hidden="true"></div>
-      <div class="backdrop backdrop-radial backdrop-radial--bottom" aria-hidden="true"></div>
+    <div class="site-shell">
+      <header class="top-bar">
+        <a class="brand" href="#" aria-label="gdlbo">
+          <span class="brand__mark material-symbols-outlined" aria-hidden="true">deployed_code</span>
+          <span class="brand__copy">
+            <strong>Artur Skubei</strong>
+            <span data-i18n="utility.subtitle">
+              Android clients, Compose UI, reverse engineering
+            </span>
+          </span>
+        </a>
 
-      <div class="site-shell">
-        <header class="utility-bar">
-          <div class="brand-panel">
-            <div class="brand-cluster">
-              <span class="material-symbols-outlined brand-icon" aria-hidden="true">deployed_code</span>
-              <div class="brand-copy">
-                <p class="brand-label">Artur Skubei</p>
-                <p class="brand-note" data-i18n="utility.subtitle">
-                  Android clients, Compose UI, reverse engineering
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="utility-panels">
-            <div class="control-panel">
-              <div
-                class="language-switch"
-                role="group"
-                aria-label="Language"
-                data-i18n-aria-label="utility.languageSwitcher"
-              >
-                <md-filter-chip data-lang="en" label="EN" selected>EN</md-filter-chip>
-                <md-filter-chip data-lang="ru" label="RU">RU</md-filter-chip>
-              </div>
-            </div>
-
-            <div class="control-panel control-panel--theme">
-              <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme">
-                <span class="theme-toggle__visual" aria-hidden="true">
-                  <span class="material-symbols-outlined control-icon" data-theme-icon>light_mode</span>
+        <div class="top-bar__actions">
+          <div class="utility-group">
+            <button
+              class="language-switch"
+              id="languageToggle"
+              type="button"
+              aria-label="Language"
+              data-i18n-aria-label="utility.languageSwitcher"
+            >
+              <span class="language-switch__track" aria-hidden="true">
+                <span class="language-switch__option">EN</span>
+                <span class="language-switch__thumb">
+                  <span class="language-switch__thumb-label" data-language-state>EN</span>
                 </span>
-                <span class="theme-toggle__copy">
-                  <span class="theme-toggle__title" data-i18n="utility.theme">Theme</span>
-                  <span class="theme-toggle__value" data-theme-state>Light</span>
-                </span>
-              </button>
-            </div>
-          </div>
-        </header>
+                <span class="language-switch__option">RU</span>
+              </span>
+            </button>
 
-        <main class="layout">
-          <section class="hero-shell">
-            <div class="hero-copy">
-              <div class="mobile-identity">
-                <img
-                  class="mobile-avatar"
-                  src="https://avatars.githubusercontent.com/u/41114720?v=4"
-                  alt="Portrait of Artur Skubei"
-                  data-i18n-alt="hero.avatarAlt"
-                />
-                <div class="mobile-identity__copy">
-                  <h2>Artur Skubei</h2>
-                  <p class="role" data-i18n="hero.role">Android developer and reverse engineer</p>
-                  <p class="mobile-stack" data-i18n="hero.profileCaption">
-                    Kotlin / Java / Compose / TDLib / Smali
-                  </p>
-                </div>
-              </div>
+            <button class="theme-switch" id="themeToggle" type="button" aria-label="Switch theme">
+              <span class="theme-switch__track" aria-hidden="true">
+                <span class="theme-switch__icon theme-switch__icon--sun material-symbols-outlined">light_mode</span>
+                <span class="theme-switch__thumb">
+                  <span class="material-symbols-outlined" data-theme-icon>light_mode</span>
+                </span>
+                <span class="theme-switch__icon theme-switch__icon--moon material-symbols-outlined">dark_mode</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <section class="mobile-avatar-panel surface" aria-hidden="true">
+        <img
+          class="mobile-avatar-panel__image"
+          src="https://avatars.githubusercontent.com/u/41114720?v=4"
+          alt="Portrait of Artur Skubei"
+          data-i18n-alt="hero.avatarAlt"
+        />
+      </section>
+
+      <main class="page">
+        <section class="section hero">
+          <div class="hero-grid">
+            <div class="hero-copy surface surface--hero">
               <h1>Artur Skubei</h1>
               <p class="role" data-i18n="hero.role">Android developer and reverse engineer</p>
               <p class="intro" data-i18n="hero.intro">
@@ -173,193 +165,189 @@
                 work across Kotlin, Java, Android SDK, Gradle, TDLib, and bytecode patching
               </p>
 
-              <div class="cta-row">
-                <md-filled-button href="https://github.com/gdlbo">
-                  <span class="material-symbols-outlined" slot="icon" aria-hidden="true">code</span>
-                  <span data-i18n="hero.primaryCta">GitHub</span>
-                </md-filled-button>
-                <md-filled-tonal-button href="https://t.me/gdlbo">
-                  <span class="material-symbols-outlined" slot="icon" aria-hidden="true">send</span>
-                  <span data-i18n="hero.secondaryCta">Telegram</span>
-                </md-filled-tonal-button>
-              </div>
+              <section class="hero-summary">
+                <p class="panel-kicker" data-i18n="hero.profileTitle">Core stack</p>
+                <p class="hero-summary__caption" data-i18n="hero.profileCaption">
+                  Kotlin / Java / Android SDK / Gradle / TDLib / Smali
+                </p>
+                <p class="hero-summary__copy" data-i18n="hero.profileSummary">
+                  Shipping Android clients with product polish on top and protocol, networking,
+                  and reverse engineering work underneath
+                </p>
+              </section>
 
-              <div class="focus-grid" aria-label="Current focus" data-i18n-aria-label="hero.focusLabel">
-                <div class="focus-item">
-                  <span class="material-symbols-outlined" aria-hidden="true">view_quilt</span>
-                  <div>
-                    <p class="focus-label" data-i18n="hero.focusA.label">UI</p>
-                    <p class="focus-value" data-i18n="hero.focusA.value">
-                      Compose, Material 3, responsive screens
-                    </p>
-                  </div>
+              <section class="hero-links-panel">
+                <div class="hero-links">
+                  <a class="hero-link" href="https://github.com/gdlbo">
+                    <span class="material-symbols-outlined hero-link__icon" aria-hidden="true">code</span>
+                    <span class="hero-link__copy">
+                      <span class="hero-link__title">GitHub</span>
+                      <span class="hero-link__meta">github.com/gdlbo</span>
+                    </span>
+                  </a>
+                  <a class="hero-link" href="https://t.me/gdlbo">
+                    <span class="material-symbols-outlined hero-link__icon" aria-hidden="true">send</span>
+                    <span class="hero-link__copy">
+                      <span class="hero-link__title">Telegram</span>
+                      <span class="hero-link__meta">t.me/gdlbo</span>
+                    </span>
+                  </a>
+                  <a class="hero-link" href="https://shikimori.io/gdlbo">
+                    <span class="material-symbols-outlined hero-link__icon" aria-hidden="true">interests</span>
+                    <span class="hero-link__copy">
+                      <span class="hero-link__title">Shikimori</span>
+                      <span class="hero-link__meta">shikimori.io/gdlbo</span>
+                    </span>
+                  </a>
                 </div>
-                <div class="focus-item">
-                  <span class="material-symbols-outlined" aria-hidden="true">memory</span>
-                  <div>
-                    <p class="focus-label" data-i18n="hero.focusB.label">Low-level</p>
-                    <p class="focus-value" data-i18n="hero.focusB.value">
-                      Smali, Frida, ApkTool, Jadx, SSL unpinning, sniffing
-                    </p>
-                  </div>
-                </div>
-              </div>
+              </section>
             </div>
 
-            <md-elevated-card class="profile-card">
-              <div class="profile-media">
+            <div class="hero-side">
+              <section class="surface identity-panel">
                 <img
                   class="avatar"
                   src="https://avatars.githubusercontent.com/u/41114720?v=4"
                   alt="Portrait of Artur Skubei"
                   data-i18n-alt="hero.avatarAlt"
                 />
+              </section>
+
+              <section class="surface focus-panel">
+                <div class="focus-panel__heading">
+                  <p class="panel-kicker" data-i18n="hero.focusLabel">Current focus</p>
+                  <h2 data-i18n="hero.focusTitle">Where the work is going</h2>
+                </div>
+
+                <div class="focus-list">
+                  <article class="focus-item">
+                    <span class="material-symbols-outlined" aria-hidden="true">view_quilt</span>
+                    <div>
+                      <p class="focus-label" data-i18n="hero.focusA.label">UI</p>
+                      <p class="focus-value" data-i18n="hero.focusA.value">
+                        Compose, Material 3, responsive screens
+                      </p>
+                    </div>
+                  </article>
+
+                  <article class="focus-item">
+                    <span class="material-symbols-outlined" aria-hidden="true">memory</span>
+                    <div>
+                      <p class="focus-label" data-i18n="hero.focusB.label">Low-level</p>
+                      <p class="focus-value" data-i18n="hero.focusB.value">
+                        Smali, Frida, ApkTool, Jadx, SSL unpinning, sniffing
+                      </p>
+                    </div>
+                  </article>
+
+                  <article class="focus-item">
+                    <span class="material-symbols-outlined" aria-hidden="true">deployed_code_history</span>
+                    <div>
+                      <p class="focus-label" data-i18n="hero.focusC.label">Shipping</p>
+                      <p class="focus-value" data-i18n="hero.focusC.value">
+                        Modular apps, reliable runtime, release-ready polish
+                      </p>
+                    </div>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading">
+            <p class="section-kicker" data-i18n="projects.kicker">Projects</p>
+            <h2 data-i18n="projects.title">Selected work</h2>
+            <p class="section-copy" data-i18n="projects.copy">
+              Product-facing Android work with different constraints: native-first UI, reverse
+              engineering, and long-lived maintenance.
+            </p>
+          </div>
+
+          <div class="showcase-grid">
+            <article class="surface project-panel">
+              <div class="project-panel__meta">
+                <div class="project-panel__meta-main">
+                  <span class="material-symbols-outlined" aria-hidden="true">chat</span>
+                  <span class="project-type" data-i18n="projects.monogram.type">Telegram client</span>
+                </div>
+                <span class="project-period">2026</span>
               </div>
-              <div class="profile-body">
-                <p class="profile-title" data-i18n="hero.profileTitle">Core stack</p>
-                <p class="profile-caption" data-i18n="hero.profileCaption">
-                  Kotlin / Java / Compose / TDLib / Smali
-                </p>
-                <md-divider></md-divider>
-                <div class="profile-spacer" aria-hidden="true"></div>
-                <p class="profile-summary" data-i18n="hero.profileSummary">
-                  Shipping Android clients with product polish on top and protocol, networking,
-                  and reverse engineering work underneath
-                </p>
+              <h3>Monogram</h3>
+              <p class="project-position" data-i18n="projects.monogram.position">
+                Telegram client built from scratch with a native-first UI
+              </p>
+              <p class="project-tech" data-i18n="projects.monogram.tech">
+                Compose + TDLib with modular layers and tight UI and runtime tuning
+              </p>
+              <div class="project-actions">
+                <md-text-button href="https://github.com/monogram-android/monogram">
+                  <span class="material-symbols-outlined" slot="icon" aria-hidden="true">code</span>
+                  <span data-i18n="common.github">GitHub</span>
+                </md-text-button>
+                <md-text-button href="https://monogram.maki.su/">
+                  <span class="material-symbols-outlined" slot="icon" aria-hidden="true">open_in_new</span>
+                  <span data-i18n="common.website">Website</span>
+                </md-text-button>
               </div>
-            </md-elevated-card>
-          </section>
+            </article>
 
-          <section class="section">
-            <div class="section-heading">
-              <p class="section-kicker" data-i18n="projects.kicker">Projects</p>
-              <h2 data-i18n="projects.title">Recent work</h2>
-            </div>
+            <article class="surface project-panel">
+              <div class="project-panel__meta">
+                <div class="project-panel__meta-main">
+                  <span class="material-symbols-outlined" aria-hidden="true">shield</span>
+                  <span class="project-type" data-i18n="projects.vtosters.type">VK mod</span>
+                </div>
+                <span class="project-period">2018-2025</span>
+              </div>
+              <h3>VTosters</h3>
+              <p class="project-position" data-i18n="projects.vtosters.position">
+                Modified VK client focused on control, privacy, and less noise
+              </p>
+              <p class="project-tech" data-i18n="projects.vtosters.tech">
+                Smali edits, bytecode patching, feature injection, and cleanup without source
+              </p>
+              <div class="project-actions">
+                <md-text-button href="https://github.com/vtosters/lite">
+                  <span class="material-symbols-outlined" slot="icon" aria-hidden="true">code</span>
+                  <span data-i18n="common.github">GitHub</span>
+                </md-text-button>
+                <md-text-button href="https://vtosters.app/">
+                  <span class="material-symbols-outlined" slot="icon" aria-hidden="true">open_in_new</span>
+                  <span data-i18n="common.projectPage">Project page</span>
+                </md-text-button>
+              </div>
+            </article>
 
-            <div class="project-grid">
-              <md-elevated-card class="project-card">
-                <div class="project-meta">
-                  <div class="project-meta-main">
-                    <span class="material-symbols-outlined" aria-hidden="true">chat</span>
-                    <span class="project-type" data-i18n="projects.monogram.type">Telegram client</span>
-                  </div>
-                  <span class="project-period">2026</span>
+            <article class="surface project-panel">
+              <div class="project-panel__meta">
+                <div class="project-panel__meta-main">
+                  <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
+                  <span class="project-type" data-i18n="projects.packageradar.type">
+                    Parcel tracking app
+                  </span>
                 </div>
-                <h3>Monogram</h3>
-                <p class="project-position" data-i18n="projects.monogram.position">
-                  Telegram client built from scratch with a native-first UI
-                </p>
-                <p class="project-tech" data-i18n="projects.monogram.tech">
-                  Compose + TDLib with modular layers and tight UI and runtime tuning
-                </p>
-                <div class="project-actions">
-                  <md-text-button href="https://github.com/monogram-android/monogram">
-                    <span class="material-symbols-outlined" slot="icon" aria-hidden="true">code</span>
-                    <span data-i18n="common.github">GitHub</span>
-                  </md-text-button>
-                  <md-text-button href="https://monogram.maki.su">
-                    <span class="material-symbols-outlined" slot="icon" aria-hidden="true">open_in_new</span>
-                    <span data-i18n="common.website">Website</span>
-                  </md-text-button>
-                </div>
-              </md-elevated-card>
+                <span class="project-period">2024-2026</span>
+              </div>
+              <h3>PackageRadar</h3>
+              <p class="project-position" data-i18n="projects.packageradar.position">
+                Parcel tracking app with readable status flow and compact screens
+              </p>
+              <p class="project-tech" data-i18n="projects.packageradar.tech">
+                Compose UI, responsive layouts, and stable tracking API integration
+              </p>
+              <div class="project-actions">
+                <md-text-button href="https://github.com/gdlbo/packageradar">
+                  <span class="material-symbols-outlined" slot="icon" aria-hidden="true">code</span>
+                  <span data-i18n="common.github">GitHub</span>
+                </md-text-button>
+              </div>
+            </article>
+          </div>
+        </section>
 
-              <md-elevated-card class="project-card">
-                <div class="project-meta">
-                  <div class="project-meta-main">
-                    <span class="material-symbols-outlined" aria-hidden="true">shield</span>
-                    <span class="project-type" data-i18n="projects.vtosters.type">VK mod</span>
-                  </div>
-                  <span class="project-period">2018-2025</span>
-                </div>
-                <h3>VTosters</h3>
-                <p class="project-position" data-i18n="projects.vtosters.position">
-                  Modified VK client focused on control, privacy, and less noise
-                </p>
-                <p class="project-tech" data-i18n="projects.vtosters.tech">
-                  Smali edits, bytecode patching, feature injection, and cleanup without source
-                </p>
-                <div class="project-actions">
-                  <md-text-button href="https://github.com/vtosters/lite">
-                    <span class="material-symbols-outlined" slot="icon" aria-hidden="true">code</span>
-                    <span data-i18n="common.github">GitHub</span>
-                  </md-text-button>
-                  <md-text-button href="https://vtosters.app/">
-                    <span class="material-symbols-outlined" slot="icon" aria-hidden="true">open_in_new</span>
-                    <span data-i18n="common.projectPage">Project page</span>
-                  </md-text-button>
-                </div>
-              </md-elevated-card>
-
-              <md-elevated-card class="project-card">
-                <div class="project-meta">
-                  <div class="project-meta-main">
-                    <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
-                    <span class="project-type" data-i18n="projects.packageradar.type">
-                      Parcel tracking app
-                    </span>
-                  </div>
-                  <span class="project-period">2024-2026</span>
-                </div>
-                <h3>PackageRadar</h3>
-                <p class="project-position" data-i18n="projects.packageradar.position">
-                  Parcel tracking app with readable status flow and compact screens
-                </p>
-                <p class="project-tech" data-i18n="projects.packageradar.tech">
-                  Compose UI, responsive layouts, and stable tracking API integration
-                </p>
-                <div class="project-actions">
-                  <md-text-button href="https://github.com/gdlbo/packageradar">
-                    <span class="material-symbols-outlined" slot="icon" aria-hidden="true">code</span>
-                    <span data-i18n="common.github">GitHub</span>
-                  </md-text-button>
-                </div>
-              </md-elevated-card>
-            </div>
-          </section>
-
-          <section class="contact-section">
-            <div class="section-heading section-heading--compact">
-              <p class="section-kicker" data-i18n="contacts.kicker">Contacts</p>
-              <h2 data-i18n="contacts.title">Links</h2>
-            </div>
-            <div class="contact-grid">
-              <a class="contact-card" href="https://github.com/gdlbo">
-                <span class="material-symbols-outlined contact-card__icon" aria-hidden="true">code</span>
-                <div class="contact-card__copy">
-                  <p class="contact-card__title">GitHub</p>
-                  <p class="contact-card__meta">github.com/gdlbo</p>
-                </div>
-                <span class="material-symbols-outlined contact-card__arrow" aria-hidden="true">north_east</span>
-              </a>
-              <a class="contact-card" href="https://t.me/gdlbo">
-                <span class="material-symbols-outlined contact-card__icon" aria-hidden="true">send</span>
-                <div class="contact-card__copy">
-                  <p class="contact-card__title">Telegram</p>
-                  <p class="contact-card__meta">t.me/gdlbo</p>
-                </div>
-                <span class="material-symbols-outlined contact-card__arrow" aria-hidden="true">north_east</span>
-              </a>
-              <a class="contact-card" href="https://maki.su">
-                <span class="material-symbols-outlined contact-card__icon" aria-hidden="true">public</span>
-                <div class="contact-card__copy">
-                  <p class="contact-card__title" data-i18n="common.website">Website</p>
-                  <p class="contact-card__meta">maki.su</p>
-                </div>
-                <span class="material-symbols-outlined contact-card__arrow" aria-hidden="true">north_east</span>
-              </a>
-              <a class="contact-card" href="https://shikimori.io/gdlbo">
-                <span class="material-symbols-outlined contact-card__icon" aria-hidden="true">interests</span>
-                <div class="contact-card__copy">
-                  <p class="contact-card__title">Shikimori</p>
-                  <p class="contact-card__meta">shikimori.io/gdlbo</p>
-                </div>
-                <span class="material-symbols-outlined contact-card__arrow" aria-hidden="true">north_east</span>
-              </a>
-            </div>
-          </section>
-        </main>
-      </div>
+      </main>
     </div>
   </body>
 </html>
