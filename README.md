@@ -42,6 +42,5 @@ Modern, visually polished Android client for the PackageRadar tracking service
 
 <div align="center">
   <a href="https://maki.su">Website</a> &nbsp; &middot; &nbsp;
-  <a href="https://t.me/gdlbo">Telegram</a> &nbsp; &middot; &nbsp;
-  <a href="https://shikimori.io/gdlbo">Shikimori</a>
+  <a href="https://t.me/gdlbo">Telegram</a>
 </div>
