@@ -22,7 +22,7 @@ Focused on high-performance mobile applications, low-level component integration
 
 **[Monogram](https://github.com/monogram-android/monogram)**
 Custom open-source Telegram client built from scratch
-* **Stack:** TDLib, Jetpack Compose, Material 3
+* **Stack:** Rust, Jetpack Compose, Material 3
 * **Details:** Native performance, complex state management and deep API integration
 * **Links:** [Website](https://monogram.maki.su) | [GitHub](https://github.com/monogram-android/monogram)
 
